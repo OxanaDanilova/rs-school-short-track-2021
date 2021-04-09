@@ -14,8 +14,22 @@
  *
  * The result should be 9
  */
-function getMatrixElementsSum(/* matrix */) {
-  throw new Error('Not implemented');
+function getMatrixElementsSum(matrix) {
+  const sumArr = Array(matrix[0].length);
+  sumArr.fill(0);
+  matrix.forEach((item) => {
+    item.forEach((el, index) => {
+      if (typeof sumArr[index] === 'number') {
+        if (el !== 0) {
+          sumArr[index] += el;
+        } else {
+          sumArr[index] = String(sumArr[index]);
+        }
+      }
+    });
+  });
+  const result = sumArr.reduce((a, b) => +a + +b);
+  return +result;
 }
 
 module.exports = getMatrixElementsSum;
