@@ -12,16 +12,15 @@
  *
  */
 function findIndex(array, value) {
-  let res;
-  let temp = 0;
-  temp = array.find((el, index) => {
-    if (el === value) {
-      console.log('temp', temp);
-      res = index;
+  let result;
+  array.reverse().forEach((item, index) => {
+    if (item === value) {
+      result = array.length - 1 - index;
+      array.splice(index, array.length - 1 - index);
     }
-    return res;
+    return result;
   });
-  return res;
+  return result;
 }
 
 module.exports = findIndex;
